@@ -3,19 +3,22 @@ package ladder.io;
 import java.util.List;
 import ladder.Ladder;
 import ladder.Line;
+import ladder.Lines;
+import ladder.Points;
 
 public class ConsoleOutputHandler implements OutputHandler {
 
     @Override
     public void printLadder(Ladder ladder) {
-        for (Line line : ladder.getLines()) {
+        final Lines lines = ladder.getLines();
+        for (Line line : lines.getLines()) {
             printLine(line.getPoints());
         }
     }
 
-    private void printLine(List<Boolean> points) {
+    private void printLine(Points points) {
         printFirstVerticalLine();
-        for (Boolean point : points) {
+        for (Boolean point : points.getPoints()) {
             printHorizontalLine(point);
         }
         alignNewLine();
