@@ -9,8 +9,15 @@ public class Size {
     private final int height;
 
     public Size(int width, int height) {
+        validate(width, height);
         this.width = width;
         this.height = height;
+    }
+
+    private void validate(int width, int height) {
+        if (width < 0 || height < 0) {
+            throw new IllegalArgumentException("음수 입력 불가");
+        }
     }
 
     public int getWidth() {
