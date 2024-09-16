@@ -1,5 +1,6 @@
 package ladder;
 
+import ladder.generator.RandomPointGenerator;
 import ladder.io.ConsoleOutputHandler;
 import ladder.io.InputHandler;
 import ladder.io.OutputHandler;
@@ -10,7 +11,7 @@ public class LadderGameApplication {
         InputHandler inputHandler = new StaticInputHandler();
         OutputHandler outputHandler = new ConsoleOutputHandler();
 
-        Ladder ladder = new Ladder(inputHandler.inputSize());
+        Ladder ladder = new Ladder(new RandomPointGenerator(), inputHandler.inputSize());
         outputHandler.printLadder(ladder);
     }
 }
