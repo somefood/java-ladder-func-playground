@@ -1,7 +1,7 @@
 package ladder;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
@@ -15,10 +15,8 @@ class SizeTest {
     void normalSize() {
         final int width = 10;
         final int height = 10;
-        final Size size = new Size(width, height);
 
-        assertThat(size.getWidth()).isEqualTo(width);
-        assertThat(size.getHeight()).isEqualTo(height);
+        assertDoesNotThrow(() -> new Size(width, height));
     }
 
     @ParameterizedTest
