@@ -10,7 +10,7 @@ public class RandomPointGenerator implements PointGenerator {
 
     @Override
     public List<Boolean> generate(int width)  {
-        final ArrayList<Boolean> points = new ArrayList<>();
+        final List<Boolean> points = new ArrayList<>();
         for (int i = 0; i < width - 1; i++) {
             connectLink(points, i);
         }
@@ -18,7 +18,7 @@ public class RandomPointGenerator implements PointGenerator {
         return points;
     }
 
-    public void connectLink(ArrayList<Boolean> points, int position) {
+    public void connectLink(List<Boolean> points, int position) {
         if (canConnectLink(points, position)) {
             points.add(false);
             return;
