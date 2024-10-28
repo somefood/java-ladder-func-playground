@@ -19,5 +19,12 @@ public class Ladder {
     public Lines getLines() {
         return lines;
     }
+
+    public int play(int currentIndex) {
+        for (Line line : lines.getLines()) {
+            currentIndex = line.move(currentIndex);
+        }
+        return currentIndex;
+    }
 }
 
