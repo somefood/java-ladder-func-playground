@@ -33,6 +33,7 @@ public class Points {
         if (currentIndex < 0 || currentIndex >= points.size()) {
             throw new IllegalArgumentException("해당 위치에 사다리가 없습니다.");
         }
+        
         // 현재 위치가 true이면 오른쪽으로 이동 가능
         if (points.get(currentIndex)) {
             return currentIndex + 1;

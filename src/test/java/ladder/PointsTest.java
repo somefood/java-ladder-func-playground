@@ -31,6 +31,7 @@ class PointsTest {
     void test(int currentIndex, int expected) {
         // given
         Points points = Points.of(List.of(true, false, true, false));
+        
         // when
         int position = points.move(currentIndex);
 
@@ -44,6 +45,7 @@ class PointsTest {
     void test2(int currentIndex, int expected) {
         // given
         Points points = Points.of(List.of(true, false, false, false));
+        
         // when
         int position = points.move(currentIndex);
 

@@ -18,16 +18,16 @@ public class LadderGameApplication {
 
         outputHandler.printLadder(ladder);
 
-//        List<Player> players = new ArrayList<>();
-//        List<Position> positions = new ArrayList<>();
-//        for (int i = 0; i < size.getWidth(); i++) {
-//            positions.add(new Position(i));
-//        }
-//
-//        for (Position position : positions) {
-//            ladder.play(position.getCurrentIndex());
-//        }
-//
-//        System.out.println(positions);
+        List<Position> positions = new ArrayList<>();
+        for (int i = 0; i < size.getWidth(); i++) {
+            positions.add(new Position(i));
+        }
+
+        positions.forEach(position -> {
+            int finalPosition = ladder.play(position.getCurrentIndex());
+            position.updateCurrentIndex(finalPosition);
+        });
+
+        outputHandler.printResult(positions);
     }
 }
