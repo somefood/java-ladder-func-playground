@@ -15,9 +15,9 @@ public class ConsoleOutputHandler implements OutputHandler {
     }
 
     @Override
-    public void printResult(List<Position> positions) {
+    public void printResult(Positions positions) {
         System.out.println();
-        for (Position position : positions) {
+        for (Position position : positions.getPositions()) {
             System.out.println(position.getStartIndex() + " -> " + position.getCurrentIndex());
         }
     }

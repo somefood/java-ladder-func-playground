@@ -1,7 +1,5 @@
 package ladder;
 
-import java.util.ArrayList;
-import java.util.List;
 import ladder.generator.RandomPointGenerator;
 import ladder.io.ConsoleInputHandler;
 import ladder.io.ConsoleOutputHandler;
@@ -18,15 +16,8 @@ public class LadderGameApplication {
 
         outputHandler.printLadder(ladder);
 
-        List<Position> positions = new ArrayList<>();
-        for (int i = 0; i < size.getWidth(); i++) {
-            positions.add(new Position(i));
-        }
-
-        positions.forEach(position -> {
-            int finalPosition = ladder.play(position.getCurrentIndex());
-            position.updateCurrentIndex(finalPosition);
-        });
+        Positions positions = Positions.initWith(size.getWidth());
+        positions.move(ladder);
 
         outputHandler.printResult(positions);
     }

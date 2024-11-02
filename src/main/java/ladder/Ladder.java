@@ -17,7 +17,7 @@ public class Ladder {
     }
 
     public List<Line> getLines() {
-        return lines;
+        return new ArrayList<>(lines);
     }
 
     public int play(int currentIndex) {
