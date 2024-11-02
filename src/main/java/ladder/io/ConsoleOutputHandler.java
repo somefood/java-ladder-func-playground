@@ -8,8 +8,8 @@ public class ConsoleOutputHandler implements OutputHandler {
 
     @Override
     public void printLadder(Ladder ladder) {
-        final Lines lines = ladder.getLines();
-        for (Line line : lines.getLines()) {
+        final List<Line> lines = ladder.getLines();
+        for (Line line : lines) {
             printLine(line.getPoints());
         }
     }
@@ -22,8 +22,8 @@ public class ConsoleOutputHandler implements OutputHandler {
         }
     }
 
-    private void printLine(Points points) {
-        for (Boolean point : points.getPoints()) {
+    private void printLine(List<Boolean> points) {
+        for (Boolean point : points) {
             printHorizontalLine(point);
         }
         alignNewLine();
