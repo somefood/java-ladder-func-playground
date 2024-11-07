@@ -11,7 +11,14 @@ public class LadderGameApplication {
         InputHandler inputHandler = new ConsoleInputHandler();
         OutputHandler outputHandler = new ConsoleOutputHandler();
 
-        Ladder ladder = new Ladder(new RandomPointGenerator(), inputHandler.inputSize());
+        final Size size = inputHandler.inputSize();
+        Ladder ladder = new Ladder(new RandomPointGenerator(), size);
+
         outputHandler.printLadder(ladder);
+
+        Positions positions = Positions.initWith(size.getWidth());
+        positions.move(ladder);
+
+        outputHandler.printResult(positions);
     }
 }
