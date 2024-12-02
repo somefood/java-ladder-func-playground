@@ -8,17 +8,22 @@ import ladder.io.OutputHandler;
 
 public class LadderGameApplication {
     public static void main(String[] args) {
-        InputHandler inputHandler = new ConsoleInputHandler();
-        OutputHandler outputHandler = new ConsoleOutputHandler();
+        final InputHandler inputHandler = new ConsoleInputHandler();
+        final OutputHandler outputHandler = new ConsoleOutputHandler();
 
-        final Size size = inputHandler.inputSize();
-        Ladder ladder = new Ladder(new RandomPointGenerator(), size);
+        final Participants participants = inputHandler.inputParticipants();
+        final GameResults gameResults = inputHandler.inputResults();
 
-        outputHandler.printLadder(ladder);
+        final int width = participants.size();
+        final Size size = inputHandler.inputSize(width);
+        final Ladder ladder = new Ladder(new RandomPointGenerator(), size);
 
-        Positions positions = Positions.initWith(size.getWidth());
-        positions.move(ladder);
+        outputHandler.printLadder(ladder, participants, gameResults);
 
-        outputHandler.printResult(positions);
+        final String participantName = inputHandler.getParticipantName();
+        final Participants findParticipants = participants.findAllByName(participantName);
+
+        findParticipants.move(ladder);
+        outputHandler.printResult(findParticipants, gameResults);
     }
 }
