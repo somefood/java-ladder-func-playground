@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Participants {
 
+    private static final String ALL = "all";
     private final List<Participant> participants;
 
     public Participants(List<Participant> participants) {
@@ -19,17 +20,27 @@ public class Participants {
     }
 
     public Participants findAllByName(String participantName) {
-        if ("all".equals(participantName)) {
+        if (ALL.equals(participantName)) {
             return new Participants(getParticipants());
         }
 
         final List<Participant> candidates = participants.stream()
             .filter(participant -> participant.hasSameName(participantName))
             .toList();
+
+        checkIfEmpty(candidates);
+
         return new Participants(candidates);
     }
 
     public void move(Ladder ladder) {
-        this.participants.forEach(participant -> participant.move(ladder));
+        checkIfEmpty(participants);
+        participants.forEach(participant -> participant.move(ladder));
+    }
+
+    private void checkIfEmpty(List<Participant> candidates) {
+        if (candidates.isEmpty()) {
+            throw new IllegalArgumentException("참여자가 존재하지 않습니다.");
+        }
     }
 }
