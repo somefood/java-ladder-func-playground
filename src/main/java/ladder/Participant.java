@@ -11,13 +11,17 @@ public class Participant {
         this.position = position;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void move(Ladder ladder) {
         int finalPosition = ladder.play(position.getCurrentIndex());
         position.updateCurrentIndex(finalPosition);
+    }
+
+    public boolean hasSameName(String name) {
+        return this.name.equals(name);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getCurrentIndex() {

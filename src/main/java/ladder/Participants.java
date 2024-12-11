@@ -24,7 +24,7 @@ public class Participants {
         }
 
         final List<Participant> candidates = participants.stream()
-            .filter(participant -> participantName.equals(participant.getName()))
+            .filter(participant -> participant.hasSameName(participantName))
             .toList();
         return new Participants(candidates);
     }
