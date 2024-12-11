@@ -17,4 +17,8 @@ public class GameResults {
     public GameResult findByIndex(int index) {
         return gameResults.get(index);
     }
+
+    public int size() {
+        return gameResults.size();
+    }
 }
